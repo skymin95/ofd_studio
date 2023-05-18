@@ -8,7 +8,8 @@ import { Link, useNavigate } from "react-router-dom";
 
 function Nav(props) {
   const navigate = useNavigate();
-  const loginCheck = () => {
+  const loginCheck = (e) => {
+    e.prevetDefault();
     const loginYorN = localStorage.getItem('loginInfo');
     const loginYorNdouble = JSON.parse(loginYorN);
     const loginIdCheck = loginYorNdouble.id;
@@ -21,7 +22,8 @@ function Nav(props) {
     }
   };
 
-  const loginCheck2 = () => {
+  const loginCheck2 = (e) => {
+    e.prevetDefault();
     const loginYorN = localStorage.getItem('loginInfo');
     const loginYorNdouble = JSON.parse(loginYorN);
     const loginIdCheck = loginYorNdouble.id;
