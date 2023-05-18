@@ -15,33 +15,43 @@ function PaymentPrice({totalPrice, usercartList}) {
   const d = getNow.getDate();
 
   const myId = usercartList[0].id;
-  console.log(myId);
-  const ClassId = usercartList.map((item) => item.MC_num);
+  const classIds = usercartList.map((item) => item.MC_num);
   const progress = '00:00';
   const todayNow = `${y}.${m}.${d}`;
 
-  const MyclassAdd = new FormData();
-  MyclassAdd.append('id', myId);
-  MyclassAdd.append('MC_num', ClassId);
-  MyclassAdd.append('progress', progress);
-  MyclassAdd.append('settingdata', todayNow);
   const getClasslink = 'http://jamm.dothome.co.kr/revolution_user/getclass.php';
 
   const GetMineClass = (e) => {
-    e.preventDefault();
-    console.log(ClassId);
-    axios.post(getClasslink, MyclassAdd)
-    .then((response) => {
-      console.log(response);
-      if(response.data.success === true ) {
+  e.preventDefault();
+
+  const formDataArray = classIds.map((classId) => {
+    const formData = new FormData();
+    formData.append('id', myId);
+    formData.append('MC_num', classId);
+    formData.append('progress', progress);
+    formData.append('settingdata', todayNow);
+    return formData;
+  });
+
+  const axiosRequests = formDataArray.map((formData) => {
+    return axios.post(getClasslink, formData);
+  });
+
+  axios.all(axiosRequests)
+    .then((responses) => {
+      console.log(responses);
+      const isSuccess = responses.every((response) => response.data.success === true);
+      if (isSuccess) {
         alert('구매가 완료되었습니다.');
         navigate('/mypage/');
       } else {
         alert('실패');
       }
     })
-  }
-
+    .catch((error) => {
+      console.error(error);
+    });
+}
 
   useEffect(() => {
     const calculatedTotalPrice = usercartList.reduce((acc, item) => {
