@@ -108,7 +108,7 @@ input[type="checkbox"]:checked::after {
   background-color: var(--bg-color1);
   color: var(--t-color3);
   font-size: var(--t-size1);
-  margin:var(--b-margin1) 0px;
+  margin: 10px auto;
 }
 .txt_tag{
   padding-left: 34%;
