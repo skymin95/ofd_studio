@@ -24,11 +24,9 @@ function ClassCont({classUser, id, key, title, price, level, instructor, desc, c
     const phpLink = 'http://jamm.dothome.co.kr/revolution_user/cart_add.php';
     axios.post(phpLink, cartShoot)
     .then((response) => {
-        setcartAdd(false);
         console.log(response);
         if(response.data.success === true) {
           alert('업데이트에 성공했습니다!')
-          setcartAdd(true);
           console.log(cartList);
         } else {
           alert('실패');

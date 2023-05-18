@@ -39,7 +39,7 @@ function App() {
   // 장바구니 리스트 테이블
   const [cartList, setcartList] = useState([]);
   // 장바구니 추가 후 추가로딩없이 이펙트 용 스테이트
-  const [cartAdd, setcartAdd] = useState(false);
+  const [cartAdd, setcartAdd] = useState();
   // 검색어 유지용 스테이트
   const [searchInput, setsearchInput] = useState('');
 
@@ -145,7 +145,7 @@ function App() {
     <>
       <BrowserRouter>
         <Header />
-        <Routes>
+        <Routes basename='/revolution_user/'>
 
           <Route path='/' element={<Main userInfo={userInfo} />} />
 

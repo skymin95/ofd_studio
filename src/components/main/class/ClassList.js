@@ -11,9 +11,9 @@ import ClassConts from './ClassConts';
 function ClassList({cartAdd, setcartAdd, cartList, setcartList, userInfo, memberclasslist, select, setselect, sortByLowPrice, sortDate2, sortInst, sortLev, sortKind}) {
 
   let Classnum = {
-    img1:'class1.png',
-    img2:'class2.png',
-    img3:'class3.png'
+    img1:'Class1.png',
+    img2:'Class2.png',
+    img3:'Class3.png'
   }
 
   function handleChange(event){
@@ -31,7 +31,7 @@ function ClassList({cartAdd, setcartAdd, cartList, setcartList, userInfo, member
         modules={[EffectCards]}
         className="mySwiper"
       >
-        <SwiperSlide><Link to='/class/view/2'><img src={process.env.PUBLIC_URL + '/images/class/'+ Classnum.img1 } alt="" /></Link></SwiperSlide>
+        <SwiperSlide><Link to='/class/view/2'><img src={process.env.PUBLIC_URL + '/images/class/Monika.jpg'+ Classnum.img1 } alt="" /></Link></SwiperSlide>
         <SwiperSlide><Link to='/class/view/3'><img src={process.env.PUBLIC_URL + '/images/class/'+ Classnum.img2 } alt="" /></Link></SwiperSlide>
         <SwiperSlide><Link to='/class/view/4'><img src={process.env.PUBLIC_URL + '/images/class/'+ Classnum.img3 } alt="" /></Link></SwiperSlide>
       </Swiper>

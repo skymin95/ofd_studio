@@ -12,6 +12,7 @@ import MypageClassList from './mypage/MypageClassList';
 import MypageReceipt from './mypage/MypageReceipt';
 import MypageQnaList from './mypage/MypageQnaList';
 import MypageQnaWrite from './mypage/MypageQnaWrite';
+import MypageClassView from './mypage/MypageClassView';
 
 import '../css/cart.css'
 
@@ -24,9 +25,10 @@ function Mypage({setUserInfo, userInfo, qnalist, setQnalist, adqnaList, setadqna
     <Route path='/*' element={<MypageWrap userInfo={userInfo} 
     searchInput={searchInput} setsearchInput={setsearchInput} />} />
 
+    <Route path='/myclassroom/:lessonId' element={<MypageClassView userInfo={userInfo} memberclasslist={memberclasslist} status={status} setStatus={setStatus} />} />
+
     <Route path='/mylikes' element={<MypageLikeslist userInfo={userInfo} zimList={zimList} setzimList={setzimList} memberclasslist={memberclasslist} />} />
 
-  
     <Route path='/myclasslist' element={<MypageClassList userInfo={userInfo} memberclasslist={memberclasslist} 
     setmemberClassList={setmemberClassList}
     status={status} setStatus={setStatus}/>} />
