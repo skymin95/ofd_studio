@@ -1,8 +1,8 @@
 import React, { useEffect } from 'react';
 import '../../css/mypage.css';
 
-function MypageQnaView({write, setWrite, qnalist, setQnalist, adqnaList, setadqnaList }) {
-  const QnaLoad = () => {
+function MypageQnaView({qnaLoad, qnalist, setQnalist, adqnaList  }) {
+  const QnaFilterPlz = () => {
     const qnaFilter = qnalist.map(item1 => {
       const matchingItems = adqnaList.filter(item2 => item1.num === item2.num);
       if (matchingItems.length > 0) {
@@ -19,10 +19,9 @@ function MypageQnaView({write, setWrite, qnalist, setQnalist, adqnaList, setadqn
     setQnalist(MyQnaFilter);
   }
 
-  useEffect(() => {
-    QnaLoad();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  useEffect(()=> {
+    QnaFilterPlz();
+  },[]);
 
   return (
     qnalist.map((item, index) => {
@@ -30,12 +29,11 @@ function MypageQnaView({write, setWrite, qnalist, setQnalist, adqnaList, setadqn
 
       return (
         <div className='qnaview_wrap' key={index}>
-          <form name='qna'>
             <label htmlFor={uniqueId}>
               <p>{item.title}
               <span class="plus">
-                 <span class="horizontal-line"></span>
-                 <span class="vertical-line"></span>
+                <span class="horizontal-line"></span>
+                <span class="vertical-line"></span>
               </span>
               </p>
             </label>
@@ -61,7 +59,6 @@ function MypageQnaView({write, setWrite, qnalist, setQnalist, adqnaList, setadqn
                 <p>{item.aq_memo}</p>
               </div>
             </div>
-          </form>
         </div>
       );
     })

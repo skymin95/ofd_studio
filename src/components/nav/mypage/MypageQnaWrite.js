@@ -2,10 +2,12 @@ import axios from 'axios';
 import React, {useState} from 'react';
 import { useNavigate } from 'react-router-dom';
 
-function MypageQnaWrite({userInfo, write, setWrite}) {
+function MypageQnaWrite({userInfo, write, setWrite, qnaLoad, setQnaLoad }) {
   const navigate = useNavigate();
   const qnaPostlink = 'http://jamm.dothome.co.kr/revolution_user/qna_post.php';
-  const QnaUserInfo = JSON.parse(userInfo);
+  // const QnaUserInfo = JSON.parse(userInfo);
+  const qnaGeto = localStorage.getItem('loginInfo');
+  const QnaUserInfo = JSON.parse(qnaGeto);
   const qnaPostData = new FormData();
   const qnaId = QnaUserInfo.id; 
 
@@ -44,6 +46,7 @@ function MypageQnaWrite({userInfo, write, setWrite}) {
         alert('문의글 등록이 완료되었습니다.');
         navigate('/mypage/qna');
         setWrite(true);
+        setQnaLoad(true);
       } else {
         alert('실패');
       }
@@ -71,7 +74,7 @@ function MypageQnaWrite({userInfo, write, setWrite}) {
         <input type="text" name="qna_title" title='문의글 제목' placeholder='제목을 입력해 주세요.' onChange={(e) => setTitle(e.target.value)
           }/>
         <textarea name="qna_cont" title='문의글 내용' placeholder='내용을 입력해 주세요.'  onChange={(e) => setMemo(e.target.value)} ></textarea>
-        <button onClick={PostQna}>
+        <button onClick={PostQna} >
           문의등록
         </button>
 

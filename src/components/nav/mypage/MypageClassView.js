@@ -1,25 +1,16 @@
 import React from 'react';
-import { useParams } from "react-router-dom";
 import '../../css/myclass.css';
+import ClassView from '../../main/class/ClassView';
 import ClassViewRelated from '../../main/class/ClassViewRelated';
 import QnaMove from '../../main/qna/QnaMove';
 
-function MypageClassView({memberclasslist, userInfo, status, setStatus}) {
-
-  const {lessonId} = useParams();
-
-  let lessonNum = memberclasslist.find(function(item) {
-    return item.MC_num === lessonId;
-});
-
-  console.log(lessonNum);
-
+function MypageClassView(props) {
   return (
     <section id="myclass_view">
     <h2 className="hidden">내 강의 보기 페이지</h2>
     <article>
       <h3>
-      {lessonNum.MC_music}
+      Black Eyed Pass - ACTION 
       {/* <!-- php --> */}
       </h3>
       
@@ -30,31 +21,31 @@ function MypageClassView({memberclasslist, userInfo, status, setStatus}) {
             <div className="flex">
               <p>Instructor</p>
               {/* <!--php --> */}
-              <p>{lessonNum.MC_instructor}</p>
+              <p>모니카, 립제이</p>
             </div>
 
             <div className="flex">
               <p>level</p>
               {/* <!--php --> */}
-              <p>{lessonNum.MC_level}</p>
+              <p>엄마나춤춰</p>
             </div>
 
             <div className="flex">
               <p>genre</p>
               {/* <!--php --> */}
-              <p>{lessonNum.MC_kind}</p>
+              <p>코레오그래피</p>
             </div>
 
             <div className="flex">
               <p>곡 정보</p>
               {/* <!--php --> */}
-              <p>{lessonNum.MC_music}</p>
+              <p>Black Eyed Peas - ACTION</p>
             </div>
           </div>   
         <div className="mycinfo_const flex">
           <div className="my_const">
           <img src={`${process.env.PUBLIC_URL}/images/class/monika.jpg`}  alt="강사 이미지" />
-            <p>{lessonNum.MC_instructor}</p>
+            <p>모니카</p>
           </div>
         </div>
 
@@ -68,11 +59,12 @@ function MypageClassView({memberclasslist, userInfo, status, setStatus}) {
       </div>
       <p className='myclass_desc'>
         {/* <!-- php--> */}
-        {lessonNum.MC_desc}
+        간단한 아이솔레이션부터 파워풀한 동작까지<br />
+        쉽게 따라할 수 있도록 해보았습니다. 이제 이렇게 따라해볼까요?
       </p>
         {/* <!-- php--> */}
     </article>
-    <ClassViewRelated memberclasslist={memberclasslist} level={lessonNum.MC_level} kind={lessonNum.MC_kind} />
+    <ClassViewRelated />
     <QnaMove />
     </section>
   );

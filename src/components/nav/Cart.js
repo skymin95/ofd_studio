@@ -7,7 +7,7 @@ function Cart({userInfo, cartList, cartAdd, setcartAdd,  setcartList}) {
   
   const cartIdArr = JSON.parse(userInfo);
   const cartidUser = cartIdArr.id;
-  
+  const [mine, setMine] = useState([]);
   //사용자 아이디와 맞는 강의num 배열
   const usercartList = cartList.filter((item) => {
     return item.id === cartidUser;
@@ -18,14 +18,15 @@ function Cart({userInfo, cartList, cartAdd, setcartAdd,  setcartList}) {
 
   console.log(usercartList);
 
+
   return (
     <>
     <section className='cart_wrap'>
       <h2>장바구니</h2>
       {usercartList.map((key)=>(
-        <SelectClassList key={key.b_key} title={key.b_title} price={key.b_price} level={key.b_level} instructor={key.b_instructor} cartAdd={cartAdd} setcartAdd={setcartAdd} totalPrice={totalPrice} setTotalPrice={setTotalPrice}/>
+        <SelectClassList key={key.b_key} title={key.b_title} price={key.b_price} level={key.b_level} instructor={key.b_instructor} cartAdd={cartAdd} setcartAdd={setcartAdd} totalPrice={totalPrice} setTotalPrice={setTotalPrice} mine={mine} setMine={mine} usercartList={usercartList} />
       ))}
-      <PaymentPrice totalPrice={totalPrice} usercartList={usercartList}/>
+      <PaymentPrice totalPrice={totalPrice} usercartList={usercartList} mine={mine} setMine={mine}/>
     </section>
     </>
   );

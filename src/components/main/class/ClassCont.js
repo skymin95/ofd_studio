@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faHeart } from "@fortawesome/free-solid-svg-icons";
 
-function ClassCont({classUser, id, key, title, price, level, instructor, desc, cartList, setcartList, cartAdd, setcartAdd}) {
+function ClassCont({classUser, id, key, title, price, level, instructor, desc, cartList}) {
 
   
   const userId = classUser; //회원 id

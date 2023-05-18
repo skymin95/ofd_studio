@@ -10,9 +10,24 @@ function Nav(props) {
   const navigate = useNavigate();
   const loginCheck = () => {
     const loginYorN = localStorage.getItem('loginInfo');
-    if (loginYorN) {
+    const loginYorNdouble = JSON.parse(loginYorN);
+    const loginIdCheck = loginYorNdouble.id;
+    if (loginIdCheck !== '') {
       // 로그인 상태일 경우 마이페이지로 이동
       navigate('/mypage');
+    } else {
+      // 로그인 상태가 아닐 경우 로그인 페이지로 이동
+      navigate('/login');
+    }
+  };
+
+  const loginCheck2 = () => {
+    const loginYorN = localStorage.getItem('loginInfo');
+    const loginYorNdouble = JSON.parse(loginYorN);
+    const loginIdCheck = loginYorNdouble.id;
+    if (loginIdCheck !== '') {
+      // 로그인 상태일 경우 마이페이지로 이동
+      navigate('/cart');
     } else {
       // 로그인 상태가 아닐 경우 로그인 페이지로 이동
       navigate('/login');
@@ -49,10 +64,10 @@ function Nav(props) {
           </Link>
         </li>
         <li>
-          <Link to='/cart' title='장바구니' className='flex f_center'>
+        <a href='#none' title='장바구니'className='flex f_center' onClick={loginCheck2}>
           <FontAwesomeIcon icon={faCartShopping}></FontAwesomeIcon>
             <p>장바구니</p>
-          </Link>
+          </a>
         </li>
       </ul>
     </nav>

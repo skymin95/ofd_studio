@@ -1,9 +1,11 @@
-import React from 'react';
+import React, { useState } from 'react';
 import {Link} from 'react-router-dom';
 // import '../css/cart.css';
 
-function SelectClassList({title, price, level, instructor, totalPrice, setTotalPrice}) {
+function SelectClassList({title, price, level, instructor, totalPrice, setTotalPrice, usercartList}) {
+  const [checkbox, setCheckbox] = useState([]);
   const comma = price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+
   return (
     <>
       <div className='classlist'>
@@ -12,7 +14,13 @@ function SelectClassList({title, price, level, instructor, totalPrice, setTotalP
           <input type='checkbox' id='cart_chk1' onChange={(event) => {
               const checked = event.target.checked;
               if (checked) {
-                setTotalPrice(Number(totalPrice) + Number(price));
+                // Number(setTotalPrice(price));
+                // console.log(totalPrice);
+                setCheckbox(checked);
+                if(checkbox === true) {
+                  setTotalPrice(price);
+                  console.log(totalPrice);
+                }
               } else {
                 setTotalPrice(Number(totalPrice) - Number(price));
               }

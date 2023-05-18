@@ -26,7 +26,7 @@ import ErrorPage from './components/ErrorPage';
 
 function App() {
   /* 유저 로그인, 정보 */
-  const [userInfo, setUserInfo] = useState('');
+  const [userInfo, setUserInfo] = useState('{"id":"","profile":"","name":"","phone":"","email":""}');
   const [loginInfo, setLoginInfo] = useState(false);
   const [qnalist, setQnalist] = useState([]);
   const [adqnaList, setadqnaList] = useState([]);
@@ -38,8 +38,7 @@ function App() {
   const [zimList, setzimList] = useState([]);
   // 장바구니 리스트 테이블
   const [cartList, setcartList] = useState([]);
-  // 장바구니 추가 후 추가로딩없이 이펙트 용 스테이트
-  const [cartAdd, setcartAdd] = useState();
+
   // 검색어 유지용 스테이트
   const [searchInput, setsearchInput] = useState('');
 
@@ -48,6 +47,10 @@ function App() {
   const cartListPHP = 'http://jamm.dothome.co.kr/revolution_user/cart.php';
   const qnaListPHP = 'http://jamm.dothome.co.kr/revolution_user/answer.php';
   const statusListPHP = 'http://jamm.dothome.co.kr/revolution_user/status.php';
+
+  const loginBase = () => {
+    const userId = localStorage.setItem('loginInfo', userInfo);
+  }
 
   const getData = () => {
     const userId = localStorage.getItem('loginInfo')
@@ -123,37 +126,32 @@ function App() {
   }
 
   useEffect(() => {
+    fetchcartList();
     getData();
     fetchClassList();
     fetchzimList();
     fetchStatusList();
+    fetchQnaList();
   // eslint-disable-next-line react-hooks/exhaustive-deps
   },[]);
 
-  // Qna 작성용 useEffect
   useEffect(() => {
-    fetchQnaList();
+    loginBase();
   // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [write])
+  },[userInfo]);
 
-  // 장바구니용 유즈 이펙트
-  useEffect(() => {
-    fetchcartList();
-  // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [cartAdd]);
   return (
     <>
       <BrowserRouter>
         <Header />
-        <Routes basename='/revolution_user/'>
+        <Routes>
 
           <Route path='/' element={<Main userInfo={userInfo} />} />
 
           <Route path='/class/*' element={<Class 
           userInfo={userInfo}
           memberclasslist={memberclasslist} 
-          cartList={cartList} setcartList={setcartList} />}
-          cartAdd={cartAdd} setcartAdd={setcartAdd} />
+          cartList={cartList} setcartList={setcartList} />}/>
 
           <Route path='/login' element={<Login loginInfo={loginInfo} setLoginInfo={setLoginInfo} />} />
 
@@ -175,7 +173,7 @@ function App() {
           <Route path='/gnb' element={<Gnb />} />
           <Route path='/search/*' element={<Search memberclasslist={memberclasslist} searchInput={searchInput} setsearchInput={setsearchInput}/>} />
 
-          <Route path='/cart' element={<Cart userInfo={userInfo} cartAdd={cartAdd} setcartAdd={setcartAdd}  cartList={cartList} setcartList={setcartList} />} />
+          <Route path='/cart' element={<Cart userInfo={userInfo} cartList={cartList} setcartList={setcartList} />} />
 
           <Route path='/chat' element={<Chatbot />} />
           <Route path='/*' element={<ErrorPage />} />

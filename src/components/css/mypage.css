@@ -209,6 +209,10 @@
   transform: translateX(-50%);
 }
 
+#qna_list {
+  padding-bottom: 40px;
+}
+
 #qna_list .qnaview_wrap div {
   font-size: var(--t-size3);
 }
@@ -272,6 +276,8 @@
   height: 85px;
   line-height: 24px;
 }
+
+
 
 
 /* 문의글 등록 */

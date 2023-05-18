@@ -4,7 +4,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faAngleRight } from "@fortawesome/free-solid-svg-icons";
 import { Link } from 'react-router-dom';
 
-function MypageQnaList({userInfo, setUserInfo, write, setWrite, qnalist, setQnalist, adqnaList, setadqnaList }) {
+function MypageQnaList({userInfo, setUserInfo, write, setWrite, qnalist, setQnalist, adqnaList, setadqnaList, qnaLoad, setQnaLoad }) {
   console.log(qnalist);
   return (
     <div>
@@ -18,7 +18,9 @@ function MypageQnaList({userInfo, setUserInfo, write, setWrite, qnalist, setQnal
         <FontAwesomeIcon icon={faAngleRight} />
         </Link>
         </div>
-        <MypageQnaView write={write} setWrite={setWrite} qnalist={qnalist} setQnalist={setQnalist} adqnaList={adqnaList} setadqnaList={setadqnaList} />
+        <MypageQnaView write={write} setWrite={setWrite} qnalist={qnalist} setQnalist={setQnalist} adqnaList={adqnaList} setadqnaList={setadqnaList}
+        qnaLoad={qnaLoad} setQnaLoad={setQnaLoad}
+      />
         </article>
       </section>
     </div>
