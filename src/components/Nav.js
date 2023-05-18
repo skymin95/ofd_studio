@@ -9,7 +9,6 @@ import { Link, useNavigate } from "react-router-dom";
 function Nav(props) {
   const navigate = useNavigate();
   const loginCheck = (e) => {
-    e.preventDefault();
     const loginYorN = localStorage.getItem('loginInfo');
     const loginYorNdouble = JSON.parse(loginYorN);
     const loginIdCheck = loginYorNdouble.id;
@@ -23,7 +22,6 @@ function Nav(props) {
   };
 
   const loginCheck2 = (e) => {
-    e.preventDefault();
     const loginYorN = localStorage.getItem('loginInfo');
     const loginYorNdouble = JSON.parse(loginYorN);
     const loginIdCheck = loginYorNdouble.id;
@@ -54,10 +52,10 @@ function Nav(props) {
           </Link>
         </li>
         <li>
-          <a href='#none' title='마이페이지 혹은 로그인 'className='flex f_center' onClick={loginCheck}>
+          <span className='flex f_center' onClick={loginCheck}>
             <FontAwesomeIcon icon={faUser}></FontAwesomeIcon>
             <p>마이페이지</p>
-          </a>
+          </span>
         </li>
         <li>
           <Link to='/Search' title='검색' className='flex f_center'>
@@ -66,10 +64,10 @@ function Nav(props) {
           </Link>
         </li>
         <li>
-        <a href='#none' title='장바구니'className='flex f_center' onClick={loginCheck2}>
+        <span className='flex f_center' onClick={loginCheck2}>
           <FontAwesomeIcon icon={faCartShopping}></FontAwesomeIcon>
             <p>장바구니</p>
-          </a>
+          </span>
         </li>
       </ul>
     </nav>

@@ -296,7 +296,9 @@ footer .chat_top a .top_btn {
   padding:20px 20px 0px 20px;
   justify-content: space-between;
 }
-.nav_lnb > li > a{
+
+.nav_lnb > li > a,
+.nav_lnb > li > span  {
   display: block;
   height:80px;
   color:var(--t-color1);
@@ -304,6 +306,7 @@ footer .chat_top a .top_btn {
   cursor: pointer;
   text-align: center;
 }
+
 .nav_lnb svg{
   width:30px;
   height:30px;
