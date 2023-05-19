@@ -43,21 +43,6 @@ const LoginForm = (e) => {
 }
 
 
-  // let sessionStorage = window.sessionStorage;
-  // const LoginForm = (event) => {
-  //   event.preventDefault();
-  //   const member = list.filter(key => key.id === id);
-  //   if(member[0]['id'] === id && member[0]['pw']) {
-  //     alert('로그인 성공'); 
-  //     sessionStorage.setItem("userId", member[0]['id']);
-  //     console.log(sessionStorage, member[0]);
-  //     navigate('/');
-  //   } else {
-  //   alert('아이디 혹은 비밀번호를 확인하세요');
-  //   }
-  // }
-  
-
   return (
     <section>
       <article className="login_wrap">

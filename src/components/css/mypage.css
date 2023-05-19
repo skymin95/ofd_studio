@@ -174,39 +174,11 @@
   position: relative;
 }
 
-.qnaview_wrap .qnaview_wrap p:first-of-type .line {
-  display: inline-block;
-  width: 20px;
-  height: 2px;
-  background-color: #000;
-  margin: 5px 0;
-}
-
-.plus {
-  display: inline-block;
-  width: 10px;
-  height: 10px;
-  position: relative;
-}
-
-.horizontal-line,
-.vertical-line {
+.qnaview_wrap .plus_icon {
   position: absolute;
-  background-color: #000;
-}
-
-.horizontal-line {
-  width: 100%;
-  height: 2px;
   top: 50%;
   transform: translateY(-50%);
-}
-
-.vertical-line {
-  width: 2px;
-  height: 100%;
-  left: 50%;
-  transform: translateX(-50%);
+  right: 15px;
 }
 
 #qna_list {

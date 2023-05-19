@@ -9,6 +9,7 @@ function MypageButton(props) {
   const Logout = (e) => {
     e.preventDefault();
     window.localStorage.removeItem('loginInfo');
+    props.setUserInfo('{"id":"","profile":"","name":"","phone":"","email":""}');
     navigate('/');
   }
   return (

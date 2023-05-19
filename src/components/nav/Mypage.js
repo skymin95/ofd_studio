@@ -19,8 +19,7 @@ import '../css/cart.css'
 function Mypage({setUserInfo, userInfo, qnalist, setQnalist, adqnaList, setadqnaList, write, setWrite, status, setStatus, zimList, setzimList, memberclasslist, setmemberClassList, searchInput, setsearchInput }) {
   
   const [qnaLoad, setQnaLoad] = useState(false);
-  
-  console.log(qnaLoad);
+
   return (
   <div>
     <MypageClass userInfo={userInfo} />

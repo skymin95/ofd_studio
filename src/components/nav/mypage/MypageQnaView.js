@@ -1,5 +1,7 @@
 import React, { useEffect } from 'react';
 import '../../css/mypage.css';
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faPlus } from "@fortawesome/free-solid-svg-icons";
 
 function MypageQnaView({qnaLoad, qnalist, setQnalist, adqnaList  }) {
   const QnaFilterPlz = () => {
@@ -30,11 +32,8 @@ function MypageQnaView({qnaLoad, qnalist, setQnalist, adqnaList  }) {
       return (
         <div className='qnaview_wrap' key={index}>
             <label htmlFor={uniqueId}>
-              <p>{item.title}
-              <span class="plus">
-                <span class="horizontal-line"></span>
-                <span class="vertical-line"></span>
-              </span>
+              <p className='qna_title'>{item.title}
+              <FontAwesomeIcon icon={faPlus} className='plus_icon'></FontAwesomeIcon>
               </p>
             </label>
             <input type="checkbox" name="qna" id={uniqueId} className='hidden open' />

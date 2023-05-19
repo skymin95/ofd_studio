@@ -7,8 +7,9 @@ import { faHeart } from "@fortawesome/free-solid-svg-icons";
 
 function ClassCont({classUser, id, key, title, price, level, instructor, desc, cartList, setcartList, cartAdd, setcartAdd}) {
 
-  
-  const userId = classUser; //회원 id
+  const IdGet = localStorage.getItem('loginInfo');
+  const userGet = JSON.parse(IdGet);
+  const userId = userGet.id;
   const cMCnum = id; //MC_num
   
   const cartShoot = new FormData();

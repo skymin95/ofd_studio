@@ -4,17 +4,17 @@ import { useNavigate } from 'react-router-dom';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCamera } from "@fortawesome/free-solid-svg-icons";
 
-function MypageUpdate({userInfo}) {
+function MypageUpdate({userInfo, setuserInfo}) {
   const users = localStorage.getItem('loginInfo');
   const user = JSON.parse(users);
   const navigate = useNavigate();
-  console.log(user);
+  console.log(user.email);
   const [pw, setPw] = useState('');
   const [pw2, setPw2] = useState('');
   const [name, setName] = useState(user.name);
   const [email, setEmail] = useState(user.email);
   const [phone, setPhone] = useState(user.phone);
-
+  const profile = user.profile;
   const id = user.id;
   console.log(user.email);
   const UpdateData = new FormData();
@@ -36,7 +36,9 @@ function MypageUpdate({userInfo}) {
         console.log(response.data)
         if(response.data.success === true) {
           alert('업데이트에 성공했습니다!')
-          navigate('/mypage')
+          navigate('/mypage');
+          const users = JSON.stringify({"id": id, "profile" : profile, "name" : name, "phone":phone, "email" : email });
+          localStorage.setItem("loginInfo", users);
         } else {
           alert('실패');
         }
