@@ -1,13 +1,13 @@
 {
   "files": {
-    "main.css": "/revolution_user/build/static/css/main.e2510fc0.css",
-    "main.js": "/revolution_user/build/static/js/main.0588d221.js",
+    "main.css": "/revolution_user/build/static/css/main.8d438f86.css",
+    "main.js": "/revolution_user/build/static/js/main.92a98d76.js",
     "index.html": "/revolution_user/build/index.html",
-    "main.e2510fc0.css.map": "/revolution_user/build/static/css/main.e2510fc0.css.map",
-    "main.0588d221.js.map": "/revolution_user/build/static/js/main.0588d221.js.map"
+    "main.8d438f86.css.map": "/revolution_user/build/static/css/main.8d438f86.css.map",
+    "main.92a98d76.js.map": "/revolution_user/build/static/js/main.92a98d76.js.map"
   },
   "entrypoints": [
-    "static/css/main.e2510fc0.css",
-    "static/js/main.0588d221.js"
+    "static/css/main.8d438f86.css",
+    "static/js/main.92a98d76.js"
   ]
 }
