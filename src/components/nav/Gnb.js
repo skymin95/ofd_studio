@@ -96,7 +96,7 @@ function Gnb(props) {
         </Link>
       </li>
       <li>
-      <Link to='/error' title='Pado ENT'>
+      <Link to='/c' title='Pado ENT'>
           Pado ENT.
       </Link>
       </li>
