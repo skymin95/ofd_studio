@@ -144,7 +144,7 @@ function App() {
     <>
       <BrowserRouter>
         <Header />
-        <Routes>
+        <Routes basename='/revolution_user/'>
 
           <Route path='/' element={<Main userInfo={userInfo} />} />
 
