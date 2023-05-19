@@ -26,7 +26,7 @@ function Cart({userInfo, cartList, cartAdd, setcartAdd,  setcartList}) {
       {usercartList.map((key)=>(
         <SelectClassList key={key.b_key} title={key.b_title} price={key.b_price} level={key.b_level} instructor={key.b_instructor} cartAdd={cartAdd} setcartAdd={setcartAdd} totalPrice={totalPrice} setTotalPrice={setTotalPrice} mine={mine} setMine={mine} usercartList={usercartList} />
       ))}
-      <PaymentPrice totalPrice={totalPrice} usercartList={usercartList} mine={mine} setMine={mine}/>
+      <PaymentPrice totalPrice={totalPrice} usercartList={usercartList} mine={mine} setMine={setMine}/>
     </section>
     </>
   );

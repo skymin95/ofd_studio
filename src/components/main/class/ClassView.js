@@ -1,5 +1,6 @@
 import React from 'react';
 import { useParams } from "react-router-dom";
+import axios from 'axios';
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faHeart } from "@fortawesome/free-solid-svg-icons";
@@ -22,6 +23,33 @@ function ClassView({userInfo, memberclasslist}) {
   let findId = memberclasslist.find(function(item) {
     return item.MC_num === viewId;
 });
+
+const classUserArr = JSON.parse(userInfo);
+const classUser = classUserArr.id;
+
+const cartShoot = new FormData();
+cartShoot.append('id', classUser);
+cartShoot.append('MC_num', viewId);
+cartShoot.append('b_title', findId.MC_title);
+cartShoot.append('b_price', findId.MC_price);
+cartShoot.append('b_level', findId.MC_level);
+cartShoot.append('b_instructor', findId.MC_instructor);
+
+const goCart = (e) => {
+  e.preventDefault();
+  const phpLink = 'http://jamm.dothome.co.kr/revolution_user/cart_add.php';
+  axios.post(phpLink, cartShoot)
+  .then((response) => {
+      console.log(response);
+      if(response.data.success === true) {
+        alert('업데이트에 성공했습니다!')
+      } else {
+        alert('실패');
+      }
+    }
+  )
+}
+
   return (
     <section id="class_view">
     <h2 className="hidden">강의 상세페이지</h2>
@@ -93,7 +121,7 @@ function ClassView({userInfo, memberclasslist}) {
         {/* <!-- php--> */}
       <div className="flex pay">
       <p><span>{findId.MC_price}</span>원</p>
-      <button className='c_btn'>장바구니</button>
+      <button className='c_btn' onClick={goCart}>장바구니</button>
       </div>
     </article>
     <ClassViewRelated memberclasslist={memberclasslist} level={findId.MC_level} kind={findId.MC_kind} />

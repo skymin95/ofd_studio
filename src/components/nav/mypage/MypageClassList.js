@@ -3,6 +3,16 @@ import React from 'react';
 import ClassIng from './ClassIng';
 
 function mypageClassList({userInfo, memberclasslist, setmemberClassList, status, setStatus}) {
+  
+  const TotalhasClass = JSON.parse(userInfo);
+  const MyIdClass = TotalhasClass.id;
+  
+  const MyIdClassFilter = status.filter((item) => {
+    return item.id === MyIdClass;
+  });
+  
+  console.log(MyIdClassFilter);
+
   return (
     <article className='myclass_list'>
       {/* 프로필 */}
@@ -20,9 +30,13 @@ function mypageClassList({userInfo, memberclasslist, setmemberClassList, status,
           종료된 강의
         </li>
       </ul>
-      <ClassIng userInfo={userInfo} memberclasslist={memberclasslist} 
-    setmemberClassList={setmemberClassList}
-    status={status} setStatus={setStatus} />
+
+      {MyIdClassFilter.map((key)=>(
+        <ClassIng id={key.MC_num} MC_num={key.MC_num}  userInfo={userInfo} progress={key.progress} settingdata={key.settingdata} memberclasslist={memberclasslist} 
+        setmemberClassList={setmemberClassList}
+        status={status} setStatus={setStatus} />
+      ))}
+
     </article>
   );
 }
