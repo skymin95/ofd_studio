@@ -3,11 +3,14 @@ import React from 'react';
 import ClassIng from './ClassIng';
 
 function mypageClassList({userInfo, memberclasslist, setmemberClassList, status, setStatus}) {
-  
-  const TotalhasClass = JSON.parse(userInfo);
+  const getIdClass = localStorage.getItem('loginInfo');
+  const TotalhasClass = JSON.parse(getIdClass);
   const MyIdClass = TotalhasClass.id;
-  
-  const MyIdClassFilter = status.filter((item) => {
+  console.log(MyIdClass);
+  const statusList = localStorage.getItem('status');
+  const totalstatusList = JSON.parse(statusList);
+  console.log(totalstatusList);
+  const MyIdClassFilter = totalstatusList.filter((item) => {
     return item.id === MyIdClass;
   });
   
@@ -32,7 +35,7 @@ function mypageClassList({userInfo, memberclasslist, setmemberClassList, status,
       </ul>
 
       {MyIdClassFilter.map((key)=>(
-        <ClassIng id={key.MC_num} MC_num={key.MC_num}  userInfo={userInfo} progress={key.progress} settingdata={key.settingdata} memberclasslist={memberclasslist} 
+        <ClassIng id={key.MC_num} MyIdClassFilter={MyIdClassFilter} MC_num={key.MC_num} userInfo={userInfo} progress={key.progress} settingdata={key.settingdata} memberclasslist={memberclasslist} 
         setmemberClassList={setmemberClassList}
         status={status} setStatus={setStatus} />
       ))}

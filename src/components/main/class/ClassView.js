@@ -95,7 +95,7 @@ const goCart = (e) => {
             <div className="flex">
               <p>곡 정보</p>
               {/* <!--php --> */}
-              <p>{findId.MC_music}</p>
+              <p className='sing_info'>{findId.MC_music}</p>
             </div>
           </div>
 
