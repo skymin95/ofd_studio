@@ -11,9 +11,9 @@ import ClassConts from './ClassConts';
 function ClassList({cartAdd, setcartAdd, cartList, setcartList, userInfo, memberclasslist, select, setselect, sortByLowPrice, sortDate2, sortInst, sortLev, sortKind}) {
 
   let Classnum = {
-    img1:'class1.png',
-    img2:'class2.png',
-    img3:'class3.png'
+    img1:'Class1.png',
+    img2:'Class2.png',
+    img3:'Class3.png'
   }
 
   function handleChange(event){

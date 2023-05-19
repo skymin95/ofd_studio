@@ -177,7 +177,7 @@ function App() {
           <Route path='/cart' element={<Cart userInfo={userInfo} cartList={cartList} setcartList={setcartList} />} />
 
           <Route path='/chat' element={<Chatbot />} />
-          <Route path='/*' element={<ErrorPage />} />
+          <Route path='/error' element={<ErrorPage />} />
         </Routes>
         <Nav />
         <Footer />
