@@ -119,6 +119,7 @@ function App() {
       const response = await axios.get(statusListPHP);
       setStatus(response.data.statuslist);
       console.log(response);
+      localStorage.setItem("status", JSON.stringify(response.data.statuslist));
     } catch (e) { // 응답 실패
       setError(e);
       console.log(e +error);

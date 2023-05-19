@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 
 import Progressbar from './Progressbar';
 
-function ClassIng({id, MC_num, progress, settingdata, memberclasslist, setmemberClassList, status, setStatus, userInfo}) {
+function ClassIng({id, MC_num, progress, settingdata, MyIdClassFilter, memberclasslist, setmemberClassList, status, setStatus, userInfo}) {
 
   let classId = memberclasslist[MC_num].MC_num;
   let totalTime = memberclasslist[MC_num].MC_time;
