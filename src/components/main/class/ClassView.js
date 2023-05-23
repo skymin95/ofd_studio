@@ -67,7 +67,7 @@ const goCart = (e) => {
         <div className="cinfo_const flex">
       
           <div className="const flex f_center">
-          <img src={`${process.env.PUBLIC_URL}/images/class/monika.jpg`}  alt="강사 이미지" />
+          <img src={`${process.env.PUBLIC_URL}/images/class/Monika.jpg`}  alt="강사 이미지" />
             <p>{findId.MC_instructor}</p>
           </div>
 

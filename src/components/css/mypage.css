@@ -103,6 +103,11 @@
   margin-bottom: 50px;
 }
 
+.myclass_recc h2 {
+  text-align: left;
+  padding: 0px 0px 15px 15px;
+  font-size: var(--t-size2);
+}
 /* 버튼 + 아이콘 서식 */
 
 .my_btn svg {

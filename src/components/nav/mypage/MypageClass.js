@@ -15,7 +15,7 @@ function MypageClass({userInfo}) {
     <h2 className="hidden">프로필</h2>
     <article className="myclass_top flex">
     <h3 className="hidden">프로필</h3>
-    <img src={`${process.env.PUBLIC_URL}/images/myclass/kayday.jpg`}  alt="프로필 이미지" className='profile_img' />
+    <img src={`${process.env.PUBLIC_URL}/images/myclass/mindol.jpg`}  alt="프로필 이미지" className='profile_img' />
       {/* <!-- 이미지 src 추후 데이터 변경 예정 --> */}
 
     <div className="profile_info">

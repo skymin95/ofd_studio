@@ -156,4 +156,14 @@
   line-height: 20px;
 }
 
+/* 탭메뉴 색상 변경 */
 
+.selected {
+  color: #fff;
+}
+
+.class_title {
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+}

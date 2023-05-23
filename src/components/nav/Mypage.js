@@ -24,7 +24,7 @@ function Mypage({setUserInfo, userInfo, qnalist, setQnalist, adqnaList, setadqna
   <div>
     <MypageClass userInfo={userInfo} />
     <Routes>
-    <Route path='/*' element={<MypageWrap userInfo={userInfo} 
+    <Route path='/*' element={<MypageWrap userInfo={userInfo} setUserInfo={setUserInfo}
     searchInput={searchInput} setsearchInput={setsearchInput} />} />
 
     <Route path='/myclassroom/:lessonId' element={<MypageClassView userInfo={userInfo} memberclasslist={memberclasslist} status={status} setStatus={setStatus} />} />

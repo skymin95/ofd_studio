@@ -4,7 +4,7 @@ import '../../css/myclass.css';
 import ClassViewRelated from '../../main/class/ClassViewRelated';
 import QnaMove from '../../main/qna/QnaMove';
 
-function MypageClassView({memberclasslist, userInfo, status, setStatus}) {
+function MypageClassView({memberclasslist, userInfo, setuserInfo, status, setStatus}) {
 
   const {lessonId} = useParams();
 
@@ -18,8 +18,8 @@ function MypageClassView({memberclasslist, userInfo, status, setStatus}) {
     <section id="myclass_view">
     <h2 className="hidden">내 강의 보기 페이지</h2>
     <article>
-      <h3>
-      {lessonNum.MC_music}
+      <h3 className='class_title'>
+      {lessonNum.MC_title}
       {/* <!-- php --> */}
       </h3>
       
@@ -53,7 +53,7 @@ function MypageClassView({memberclasslist, userInfo, status, setStatus}) {
           </div>   
         <div className="mycinfo_const flex">
           <div className="my_const">
-          <img src={`${process.env.PUBLIC_URL}/images/class/monika.jpg`}  alt="강사 이미지" />
+          <img src={`${process.env.PUBLIC_URL}/images/class/Monika.jpg`}  alt="강사 이미지" />
             <p>{lessonNum.MC_instructor}</p>
           </div>
         </div>

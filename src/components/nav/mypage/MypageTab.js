@@ -1,12 +1,10 @@
-import React from 'react';
+import React, {useState} from 'react';
 import  { Link } from 'react-router-dom';
 import '../../css/myclass.css';
 // import MypageClassRecent from './MypageClassRecent';
 
 function MypageTab(props) {
-  // const tabOn = style.tabOn`
-  //   color: var(--bg-color1);
-  // `;
+  const [selectedTab, setSelectedTab] = useState('/mypage');
   return (
     <>
       <section id="mypage_tab">
@@ -19,10 +17,12 @@ function MypageTab(props) {
         </p>
         <ul className='flex'>
           <li>
-          <Link to='/mypage'>Class</Link>
+          <Link to='/mypage'  onClick={() => setSelectedTab('/mypage')}
+          className={selectedTab === '/mypage' ? 'selected' : ''}>Class</Link>
           </li>
           <li>
-          <Link to='/mypage/challenge'><span>Challenge</span></Link>
+          <Link to='/mypage/challenge' onClick={() => setSelectedTab('/mypage/challenge')}
+          className={selectedTab === '/mypage/challenge' ? 'selected' : ''}><span>Challenge</span></Link>
           </li>
         </ul>
         </div>
