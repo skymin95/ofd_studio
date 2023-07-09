@@ -3,7 +3,7 @@ import '../../css/mypage.css';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPlus } from "@fortawesome/free-solid-svg-icons";
 
-function MypageQnaView({qnaLoad, qnalist, setQnalist, adqnaList  }) {
+function MypageQnaView({qnalist, setQnalist, adqnaList  }) {
   const QnaFilterPlz = () => {
     const qnaFilter = qnalist.map(item1 => {
       const matchingItems = adqnaList.filter(item2 => item1.num === item2.num);

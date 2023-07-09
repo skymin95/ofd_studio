@@ -7,10 +7,7 @@ function mypageClassList({userInfo, memberclasslist, setmemberClassList, status,
   const TotalhasClass = JSON.parse(getIdClass);
   const MyIdClass = TotalhasClass.id;
   console.log(MyIdClass);
-  const statusList = localStorage.getItem('status');
-  const totalstatusList = JSON.parse(statusList);
-  console.log(totalstatusList);
-  const MyIdClassFilter = totalstatusList.filter((item) => {
+  const MyIdClassFilter = status.filter((item) => {
     return item.id === MyIdClass;
   });
   

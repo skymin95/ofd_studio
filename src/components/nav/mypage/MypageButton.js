@@ -9,8 +9,9 @@ function MypageButton(props) {
   const Logout = (e) => {
     e.preventDefault();
     window.localStorage.removeItem('loginInfo');
-    const loginInfo = '{"id":"","profile":"","name":"","phone":"","email":""}';
-    localStorage.setItem('loginInfo', loginInfo);
+
+    const userRemove = JSON.stringify({"id": '', "profile" : '', "name" : '', "phone":'', "email" : '', "expirationTime": '' })
+    localStorage.setItem("loginInfo", userRemove);
     navigate('/');
   }
   return (

@@ -4,7 +4,7 @@ import '../../css/myclass.css';
 import ClassViewRelated from '../../main/class/ClassViewRelated';
 import QnaMove from '../../main/qna/QnaMove';
 
-function MypageClassView({memberclasslist, userInfo, setuserInfo, status, setStatus}) {
+function MypageClassView({memberclasslist}) {
 
   const {lessonId} = useParams();
 
@@ -18,8 +18,8 @@ function MypageClassView({memberclasslist, userInfo, setuserInfo, status, setSta
     <section id="myclass_view">
     <h2 className="hidden">내 강의 보기 페이지</h2>
     <article>
-      <h3 className='class_title'>
-      {lessonNum.MC_title}
+      <h3>
+      {lessonNum.MC_music}
       {/* <!-- php --> */}
       </h3>
       

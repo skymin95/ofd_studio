@@ -24,7 +24,7 @@ function Mypage({setUserInfo, userInfo, qnalist, setQnalist, adqnaList, setadqna
   <div>
     <MypageClass userInfo={userInfo} />
     <Routes>
-    <Route path='/*' element={<MypageWrap userInfo={userInfo} setUserInfo={setUserInfo}
+    <Route path='/*' element={<MypageWrap userInfo={userInfo} 
     searchInput={searchInput} setsearchInput={setsearchInput} />} />
 
     <Route path='/myclassroom/:lessonId' element={<MypageClassView userInfo={userInfo} memberclasslist={memberclasslist} status={status} setStatus={setStatus} />} />
@@ -41,11 +41,13 @@ function Mypage({setUserInfo, userInfo, qnalist, setQnalist, adqnaList, setadqna
     status={status} setStatus={setStatus}
     />} />
 
-    <Route path='/qna' write={write} setWrite={setWrite} element={<MypageQnaList userInfo={userInfo} qnalist={qnalist} setQnalist={setQnalist} adqnaList={adqnaList} setadqnaList={setadqnaList} setUserInfo={setUserInfo}
+    <Route path='/qna' element={<MypageQnaList userInfo={userInfo} qnalist={qnalist} setQnalist={setQnalist} write={write} setWrite={setWrite}  adqnaList={adqnaList} setadqnaList={setadqnaList} setUserInfo={setUserInfo}
     qnaLoad={qnaLoad} setQnaLoad={setQnaLoad}
     />} />
     <Route path='/qnawrite' element={<MypageQnaWrite 
     setQnaLoad={setQnaLoad}
+    setQnalist={setQnalist}
+    qnalist={qnalist}
     userInfo={userInfo} wirte={write} setWrite={setWrite} />} />
 
     </Routes>

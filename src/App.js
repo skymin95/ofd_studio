@@ -1,7 +1,7 @@
 
 import React, {useEffect, useState} from 'react';
 import axios from 'axios';
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import { HashRouter, Routes, Route } from 'react-router-dom';
 
 import './App.css';
 import './components/css/u_common.css';
@@ -49,7 +49,17 @@ function App() {
   const statusListPHP = 'http://jamm.dothome.co.kr/revolution_user/status.php';
 
   const loginBase = () => {
-    const userId = localStorage.setItem('loginInfo', userInfo);
+    const id = localStorage.getItem("loginInfo")?.id || '';
+    console.log(id);
+    if (id !== '') {
+      const name = '';
+      const profile = '';
+      const phone = '';
+      const email = '';
+      const expirationTime = '';
+      const baseUser = JSON.stringify({"id": id, "profile" : profile, "name" : name, "phone":phone, "email" : email, "expirationTime": expirationTime });
+      localStorage.setItem("loginInfo", baseUser);
+    }
   }
 
   const getData = () => {
@@ -65,15 +75,15 @@ function App() {
     try { // 응답 성공
       const response = await axios.get(qnaListPHP);
       console.log(response.data.qnalist, response.data.adqnalist);
-
-      localStorage.setItem("myqnalist", JSON.stringify(response.data.qnalist));
- 
-      const qnaTable = JSON.parse(localStorage.getItem('myqnalist'));
-      localStorage.setItem("adqnalist", JSON.stringify(response.data.adqnalist));
-
-      const adQnaTable = JSON.parse(localStorage.getItem('adqnalist'));
-      setQnalist(qnaTable)
-      setadqnaList(adQnaTable);
+      // localStorage.setItem("myqnalist", JSON.stringify(response.data.qnalist));
+      // const qnaTable = JSON.parse(localStorage.getItem('myqnalist'));
+      // localStorage.setItem("adqnalist", JSON.stringify(response.data.adqnalist));
+      // const adQnaTable = JSON.parse(localStorage.getItem('adqnalist'));
+      // window.localStorage.removeItem('myqnalist');
+      // window.localStorage.removeItem('adqnalist');
+      setQnalist(response.data.qnalist);
+      setadqnaList(response.data.adqnalist);
+      console.log(qnalist);
 
     } catch (e) { // 응답 실패
       setError(e);
@@ -118,14 +128,31 @@ function App() {
     try { // 응답 성공
       const response = await axios.get(statusListPHP);
       setStatus(response.data.statuslist);
-      console.log(response);
-      localStorage.setItem("status", JSON.stringify(response.data.statuslist));
+      console.log(status);
     } catch (e) { // 응답 실패
       setError(e);
       console.log(e +error);
     }
   }
 
+  const checkExpirationAndRemove = () => {
+    const getInfo = localStorage.getItem("loginInfo");
+    if (getInfo) {
+      const parsedInfo = JSON.parse(getInfo);
+      const expirationTime = parsedInfo.expirationTime;
+      const currentTime = new Date().getTime();
+      if (parsedInfo.id !== "" && currentTime >= expirationTime) {
+        parsedInfo.id = "";
+        parsedInfo.profile = "";
+        parsedInfo.name = "";
+        parsedInfo.phone = "";
+        parsedInfo.email = "";
+  
+        localStorage.setItem("loginInfo", JSON.stringify(parsedInfo));
+      }
+    }
+  };
+  
   useEffect(() => {
     fetchcartList();
     getData();
@@ -133,6 +160,9 @@ function App() {
     fetchzimList();
     fetchStatusList();
     fetchQnaList();
+    loginBase();
+    checkExpirationAndRemove();
+    // checkExpirationAndRemove();
   // eslint-disable-next-line react-hooks/exhaustive-deps
   },[]);
 
@@ -143,9 +173,9 @@ function App() {
 
   return (
     <>
-      <BrowserRouter>
+      <HashRouter>
         <Header />
-        <Routes basename='/revolution_user/'>
+        <Routes basename='/revolution_user_d/'>
 
           <Route path='/' element={<Main userInfo={userInfo} />} />
 
@@ -154,7 +184,7 @@ function App() {
           memberclasslist={memberclasslist} 
           cartList={cartList} setcartList={setcartList} />}/>
 
-          <Route path='/login' element={<Login loginInfo={loginInfo} setLoginInfo={setLoginInfo} />} />
+          <Route path='/login' element={<Login setUserInfo={setUserInfo} loginInfo={loginInfo} setLoginInfo={setLoginInfo} />} />
 
           <Route path='/register' element={<Register />} />
 
@@ -181,7 +211,7 @@ function App() {
         </Routes>
         <Nav />
         <Footer />
-      </BrowserRouter>
+      </HashRouter>
     </>
   );
 }

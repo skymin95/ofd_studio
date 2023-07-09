@@ -61,7 +61,7 @@ function MypageUpdate({userInfo, setuserInfo}) {
 
     <div className='img_update'>
     <label htmlFor="memebr_img">
-    <img src={`${process.env.PUBLIC_URL}/images/myclass/mindol.jpg`}  alt="프로필 이미지" className='member_img' />
+    <img src={`${process.env.PUBLIC_URL}/images/myclass/monika.jpg`}  alt="프로필 이미지" className='member_img' />
     <FontAwesomeIcon icon={faCamera}></FontAwesomeIcon>
     </label>
     <input type="file" alt="프로필 이미지" id='memebr_img'/>

@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faUser } from "@fortawesome/free-solid-svg-icons";
@@ -34,10 +34,6 @@ function Nav(props) {
     }
   };
 
-  useEffect(() => {
-    loginCheck();
-  // eslint-disable-next-line react-hooks/exhaustive-deps
-  },[]);
   return (
     <nav id='u_nav'>
       <ul className='nav_lnb flex'>

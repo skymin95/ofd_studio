@@ -2,7 +2,7 @@ import axios from 'axios';
 import React, {useState} from 'react';
 import { useNavigate } from 'react-router-dom';
 
-function MypageQnaWrite({userInfo, write, setWrite, qnaLoad, setQnaLoad }) {
+function MypageQnaWrite({qnalist, setWrite, setQnaLoad }) {
   const navigate = useNavigate();
   const qnaPostlink = 'http://jamm.dothome.co.kr/revolution_user/qna_post.php';
   // const QnaUserInfo = JSON.parse(userInfo);
@@ -19,10 +19,10 @@ function MypageQnaWrite({userInfo, write, setWrite, qnaLoad, setQnaLoad }) {
   const year = today.getFullYear();
   const month = today.getMonth()+1;
   const day = today.getDate();
-  const qnaNumFilter = localStorage.getItem('myqnalist');
-  const qnaAll = JSON.parse(qnaNumFilter);
+  console.log(qnalist);
+  const qnaAll = Array.from(qnalist);
   
-  const numArray = qnaAll.map(item => parseInt(item.num));
+  const numArray = qnaAll.map(item => item.num);
   const maxNum = Math.max(...numArray);
 
   const todayDate = `${year}.${month}.${day}`;

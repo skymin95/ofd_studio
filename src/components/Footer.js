@@ -8,14 +8,6 @@ import { Link } from "react-router-dom";
 
 
 function Footer(props) {
-  const scrollToTop = () => {
-    window.scrollTo({
-      top: 0,
-      behavior: 'smooth',
-    });
-  };
-
-
   return (
     <footer>
     <div className="chat_top">
@@ -23,7 +15,7 @@ function Footer(props) {
     <FontAwesomeIcon icon={faRobot} className='chatbot'></FontAwesomeIcon>
     </Link>
 
-    <a href="#none" onClick={scrollToTop} title="최상단으로 이동" className="top_btn">
+    <a href="#none"  title="최상단으로 이동" className="top_btn">
     <FontAwesomeIcon icon={faPlay} className='top_btn'></FontAwesomeIcon>
     </a>
     </div>

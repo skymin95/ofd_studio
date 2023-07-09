@@ -2,7 +2,7 @@ import React, {useState } from 'react';
 import {Link, useNavigate } from "react-router-dom";
 import axios from 'axios';
 
-function Login({setLoginInfo, loginInfo}) {
+function Login({setUserInfo, loginInfo, setLoginInfo}) {
   const navigate = useNavigate();
   const [id, setId] = useState('');
   const [pw, setPw] = useState('');
@@ -24,20 +24,22 @@ function Login({setLoginInfo, loginInfo}) {
 
 const LoginForm = (e) => {
   e.preventDefault();
+  setLoginInfo(true);
   axios.post(phpLink, formdata)
   .then((response) => {
-    setLoginInfo(response.data.success); // 데이터 석세스 값을 먼저 받아온다.
+    setUserInfo(response.data.success); // 데이터 석세스 값을 먼저 받아온다.
     if(loginInfo === true) {
     const id = response.data.id;
     const name = response.data.name;
     const profile = response.data.profile;
     const phone = response.data.phone;
     const email = response.data.email;
-    const users = JSON.stringify({"id": id, "profile" : profile, "name" : name, "phone":phone, "email" : email })
+    const expirationTime = new Date().getTime() + (30 * 60 * 1000); // 현재 시간에 30분을 더한 값
+    const users = JSON.stringify({"id": id, "profile" : profile, "name" : name, "phone":phone, "email" : email, "expirationTime": expirationTime })
     localStorage.setItem("loginInfo", users);
     navigate('/');
   } else {
-    alert('비밀번호가 틀렸습니다. 다시 로그인해주세요.');
+    alert('비밀번호가 틀렸습니다. 다시 로그인해주세요.(아이디 비밀번호 일치 시 확인 누르고 다시 로그인하시면 됩니다.)');
   }
  })
 }
